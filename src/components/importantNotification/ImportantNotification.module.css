@@ -1,0 +1,6 @@
+.one{
+    background-color:var(--blue);
+    color: var(--white);
+    outline: 1px solid var(--lightBlue);
+    padding: 1rem ;text-align: center;    margin: 0 1rem;
+}

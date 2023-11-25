@@ -1,0 +1,11 @@
+.chart{
+    min-width: 500px !important;
+    
+}
+.chartWrapper{direction: ltr;
+    padding-top: 2rem;
+    width: 100%;
+    height: 100%;
+    overflow-y: clip;
+    overflow-x: auto;
+}

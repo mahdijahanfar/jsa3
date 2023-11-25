@@ -1,0 +1,67 @@
+
+  .input{
+    margin: 1rem !important;
+    flex-grow: 1;
+  }
+  .links{
+    transition: all ease .35s;
+    padding: 1rem !important;
+    color: var(--darkBlue) !important;
+    background-color: var(--lightBlue) !important;
+    margin: .3rem !important;
+    border-radius: 2px !important;
+    flex-grow: 0;
+  
+  }
+  .activedLink{
+    color: var(--lightBlue) !important;
+    background-color: var(--darkBlue) !important;
+    flex-grow: 1;
+    font-weight: 900;
+    text-shadow: 0 0 6px;
+}
+.linksWrapper{
+  display: flex;
+}
+ .form{
+   display: flex;
+   flex-wrap: wrap;
+   padding-top: 3rem;    justify-content: center;
+ }
+ .tAreaWrap{
+   flex-basis: 100%;
+   padding: 3rem 1rem;
+ }
+ .tArea{
+  border: 1px solid rgb(var(--black-rgb),0.4);
+  margin-top: 1rem;
+  width: calc(100% - 1rem - 2px);
+  resize: vertical;
+ }
+ .search{
+  margin: 3rem 0;
+    outline: 1px solid var(--blue);
+    padding: 1px 2.5rem 1px 0;
+    border-radius: 40px;
+    box-shadow: 0 0 6px 1px rgb(var(--black-rgb),0.4) !important;
+    display: flex;
+    align-items: center;
+  }
+ .searchButton {
+  
+  padding: 1rem !important;
+  color: var(--blue) !important;
+  box-shadow: 0 0 6px 1px rgb(var(--black-rgb),0.4) !important;
+}
+ .button{
+  padding: .3rem 4rem !important;
+border: 1px solid var(--lightBlue) !important;
+background-color: var(--blue) !important;
+color: var(--white) !important;
+font-size: 2rem;
+border-radius: 4px !important;align-self: center;   max-width: 15rem;
+}
+ @media screen and (max-width: 500px) {
+  .button{max-width:unset;width: 100%;}
+  
+  }

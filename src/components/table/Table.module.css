@@ -1,0 +1,12 @@
+
+.trEve{
+    background-color: var(--gray);
+    box-shadow: 0px 5px 10px -6px var(--black);
+}
+.cell{
+    transition: all .5s;
+}
+.cell:hover{
+background-color: rgba(var(--lightBlue-rgb), 0.2);
+color: var(--blue);
+}

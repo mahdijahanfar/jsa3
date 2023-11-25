@@ -1,0 +1,8 @@
+.welcome{
+    padding: 1.5rem 0;
+    text-align: center;
+    border-bottom: 2px solid var(--blue);
+    border-radius: 100%;
+    margin-bottom: 3rem;
+}
+

@@ -1,0 +1,28 @@
+.progsHeader{
+  text-align: center;
+  }
+  .progsHeaderWrapper{
+      display: flex;
+      padding: 3rem 0;
+      align-items: baseline;
+  }
+  .progsHeaderLines{
+  flex-grow: 1;
+  padding:1px 0;    margin: 0 1rem;
+  }
+  .progsHeaderRight{
+      background: linear-gradient(90deg, var(--white) , var(--lightBlue));
+  }
+  .progsHeaderLeft{
+      background: linear-gradient(270deg, var(--white) , var(--lightBlue));
+  }
+  
+  .progsWrapper{
+      
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+            padding: 1rem;
+  }
+  .history{
+      padding-right: 1rem;
+  }

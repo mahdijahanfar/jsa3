@@ -1,0 +1,23 @@
+.root{
+  background-Color: var(--gray2);
+    width: 100%;
+    display: flex;
+    justify-Content: center;
+    align-Items: center;
+    height: 100vh;
+}
+.paper{
+  max-Width:50rem;
+  padding:1rem;
+  flex-basis: 70%;
+}
+.tabs{
+  padding-Top:1rem
+}
+.title{
+  padding:1rem 0;
+  text-Align:center;
+  font-Weight:1000;
+  border-Bottom:1px solid var(--blue);
+  border-Radius:60%;
+}

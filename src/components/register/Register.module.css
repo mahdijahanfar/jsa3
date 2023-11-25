@@ -1,0 +1,25 @@
+
+.inputElems{
+    padding:1rem 0;
+    display: flex;
+    justify-Content: space-between;
+  }
+  .button{
+    width:100%;
+  }
+  .endButtonsWrapper{
+    display: flex;justify-content: space-between;
+  }
+  .endButtonsWrapper button{
+    flex-basis: 49%;
+    overflow: hidden;
+  }
+  .input{
+    flex-basis: 50%;
+  }
+    .eye{
+      width: unset !important;
+      border-radius: 50px !important;
+      padding: 0 0.5rem !important;
+      
+      }

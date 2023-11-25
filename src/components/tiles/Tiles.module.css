@@ -1,0 +1,22 @@
+.tilesWrapper{
+    display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 0fr));
+        justify-content: center;
+}
+.buttonBase{
+    margin: 1rem !important;
+    transition: all 0.4s;
+}
+  .buttonBase:active {
+    transform: scale(0.95, 0.95);
+    box-shadow: 0rem 0rem 0.7rem 0.1rem var(--darkBlue);
+
+  }
+  .tile{
+    text-align: center;
+    flex-grow: 1;
+    padding: 2rem 3rem;
+    border: 1px solid var(--blue);
+    border-radius: 1px;
+    background-color: var(--darkBlue);
+}

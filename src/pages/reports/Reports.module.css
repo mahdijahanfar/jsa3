@@ -1,0 +1,41 @@
+
+.row1{
+    display: flex;justify-content: space-between;padding: 2rem 0;
+    align-items: baseline;
+}
+.row2{
+    display: flex;justify-content: space-between;padding-top: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.formControl{
+    flex-basis: 25rem;border: 1px solid var(--darkGray) !important;
+    border-radius: 4px;
+    overflow: hidden;
+}
+    .button{
+        
+    border: 1px solid var(--lightBlue) !important;
+    background-color: var(--blue) !important;
+    color: var(--white) !important;
+    font-size: 2rem;
+    border-radius: 4px !important;   max-width: 15rem;align-self: end;    width: 100%;
+    }
+    
+    .labels{
+        white-space: nowrap;    padding-left: 2rem;
+    }
+    .datesForm{
+        display: flex;
+    justify-content: space-between;padding-bottom: 2rem;
+    }
+    .dates{
+        display: flex;align-items: center;
+    }
+    @media screen and (max-width: 670px) {
+        .datesWrapper{
+            padding-bottom: 2rem;
+
+        }
+        .datesForm {flex-direction: column;}
+    }

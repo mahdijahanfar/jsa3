@@ -1,0 +1,64 @@
+.simplesCard{
+  box-shadow: 0 0 10px 0 rgb(var(--black-rgb) , 0.4);
+    border-radius: 4px;
+    text-shadow: 0 0 6px var(--limeShadow);outline: none;
+  }
+.img{
+
+  object-fit: cover;
+          height:    25rem;
+      width: 100%;
+}
+.button{
+  padding: .3rem 4rem !important;
+border: 1px solid var(--lightBlue) !important;
+background-color: var(--blue) !important;
+color: var(--white) !important;
+font-size: 2rem;
+border-radius: 4px !important;align-self: center;   width: 100%;
+}
+.cardDesciript{
+  padding: 1rem;
+}
+.cardName{
+  padding-bottom: .5rem;    
+  border-bottom:1px solid var(--lightBlue);
+  display: flex;
+  justify-content: space-between;
+}
+.cardCode{
+  padding: 1rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  direction: rtl;
+}
+.noSlider{
+  display: flex;
+  flex-wrap: wrap;
+}
+.noSlider>div{
+  margin: 1rem;
+  flex-grow: 1;
+  width: calc(33% - 2rem);
+  max-width: calc(33% - 2rem);
+}
+.titleStyle{
+  overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 1rem;
+    direction: rtl;
+}
+ @media screen and (max-width: 950px) {
+  .noSlider>div{
+  width: calc(50% - 2rem);
+  max-width: calc(50% - 2rem);
+  }
+}
+@media screen and (max-width: 650px) {
+  .noSlider>div{
+  width: calc(100% - 2rem);
+  max-width: calc(100% - 2rem);
+  }
+} 
