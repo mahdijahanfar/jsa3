@@ -4,7 +4,7 @@ import { api_news } from '../../api/api_app'
 import { simplesCard, button, img, cardDesciript, cardName, cardCode, noSlider, titleStyle } from "./Slider.module.css"
 import React, { useEffect } from "react"
 import { ButtonBase, CircularProgress, Slide } from '@material-ui/core'
-import { useSnackStore } from '../../context/zustand/store'
+import { useShowMessageErr, useSnackStore } from '../../context/zustand/store'
 import { useQuery } from 'react-query'
 export default function Index() {
     const {
@@ -12,7 +12,13 @@ export default function Index() {
     } = useSnackStore(state => ({
         setSnack: state.setSnack
     }))
-    const { isLoading, error, data } = useQuery(['slider', [{ data_range: 'lastNinetyDays' }]], () => api_news())
+    const {
+        setAllowShowErr, allowShowErr
+    } = useShowMessageErr(state => ({
+        allowShowErr: state.show,
+        setAllowShowErr: state.shower,
+    }))
+    let { isLoading, error, data } = useQuery(['slider', [{ data_range: 'lastNinetyDays' }]], () => api_news())
     function TransitionLeft(props) {
         return <Slide {...props} direction="left" />;
     }
@@ -27,7 +33,10 @@ export default function Index() {
     useEffect(() => {
         if (data) {
             if (data.message) {
-                logger(data.message)
+                if (allowShowErr) {
+                    logger(data.message)
+                    setAllowShowErr(false)
+                }
             } else if (!data.length) {
                 logger("فعلا اخباری موجود نیست", "warning")
             }

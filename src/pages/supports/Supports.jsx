@@ -8,7 +8,7 @@ import {
 } from "./Supports.module.css"
 import Table from "./../../components/table/Table"
 import SwipeableViews from 'react-swipeable-views';
-import { useSnackStore, supportsData } from "../../context/zustand/store";
+import { useSnackStore, supportsData, useShowMessageErr } from "../../context/zustand/store";
 import { useQuery } from "react-query";
 import { send_ticket } from "./../../api/api_app"
 export default function Index() {
@@ -44,6 +44,12 @@ export default function Index() {
         setSnack
     } = useSnackStore(state => ({
         setSnack: state.setSnack
+    }))
+    const {
+        setAllowShowErr, allowShowErr
+    } = useShowMessageErr(state => ({
+        allowShowErr: state.show,
+        setAllowShowErr: state.shower,
     }))
     const logger = (message, state = "error", position = TransitionLeft) => {
         setSnack({
@@ -106,7 +112,10 @@ export default function Index() {
 
 
                     if (data.message && typeof (data.message) === "string") {
-                        logger(data.message)
+                        if (allowShowErr) {
+                            logger(data.message)
+                            setAllowShowErr(false)
+                        }
                     } else {
                         logger("مشکلی پیش آمده")
                     }

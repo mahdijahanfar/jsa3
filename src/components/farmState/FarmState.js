@@ -3,12 +3,18 @@ import { progsHeader, history, progsWrapper, progsHeaderWrapper, progsHeaderLine
 import ProgressBar from '../proggressBar/ProgressBar';
 import { api_farm_state } from "../../api/api_app"
 import { useQuery } from 'react-query'
-import { useSnackStore } from '../../context/zustand/store'
+import { useShowMessageErr, useSnackStore } from '../../context/zustand/store'
 import { CircularProgress, Slide } from '@material-ui/core'
 
 export default () => {
-    const { isLoading, error, data } = useQuery('farm_state', () => api_farm_state())
+    let { isLoading, error, data } = useQuery('farm_state', () => api_farm_state())
 
+    const {
+        setAllowShowErr, allowShowErr
+    } = useShowMessageErr(state => ({
+        allowShowErr: state.show,
+        setAllowShowErr: state.shower,
+    }))
     const {
         setSnack
     } = useSnackStore(state => ({
@@ -28,7 +34,10 @@ export default () => {
     useEffect(() => {
         if (data) {
             if (data.message) {
-                logger(data.message)
+                if (allowShowErr) {
+                    logger(data.message)
+                    setAllowShowErr(false)
+                }
             } else if (!data.length) {
                 logger("فعلا گزارش حالتی از مزرعه موجود نیست", "info")
             }

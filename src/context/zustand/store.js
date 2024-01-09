@@ -29,6 +29,10 @@ export const useDrawerStore = create(set => ({
     close: false,
     closer: (boolean) => set(() => ({ close: boolean })),
 }))
+export const useShowMessageErr = create(set => ({
+    show: true,
+    shower: (boolean) => set(() => ({ show: boolean })),
+}))
 export const useSnackStore = create(set => ({
     message: "",
     open: false,

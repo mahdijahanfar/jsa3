@@ -7,7 +7,7 @@ import DateInput from "./../../components/dateInput/DateInput"
 import { itterableArray } from "./../../utils/itterableArray"
 import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
-import { reportForm, useSnackStore } from "../../context/zustand/store";
+import { reportForm, useShowMessageErr, useSnackStore } from "../../context/zustand/store";
 import { report_form } from '../../api/api_app';
 import { fixNumbers } from "../../utils/fixArabicNums";
 export default function Index() {
@@ -123,6 +123,12 @@ export default function Index() {
             alert: state,
         })
     }
+    const {
+        setAllowShowErr, allowShowErr
+    } = useShowMessageErr(state => ({
+        allowShowErr: state.show,
+        setAllowShowErr: state.shower,
+    }))
     function TransitionLeft(props) {
         return <Slide {...props} direction="left" />;
     }
@@ -197,7 +203,10 @@ export default function Index() {
 
 
                     if (data.message && typeof (data.message) === "string") {
-                        logger(data.message)
+                        if (allowShowErr) {
+                            logger(data.message)
+                            setAllowShowErr(false)
+                        }
                     } else {
                         logger("مشکلی پیش آمده")
                     }

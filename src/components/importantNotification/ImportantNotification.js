@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useQuery } from "react-query";
-import { useSnackStore } from "../../context/zustand/store";
+import { useShowMessageErr, useSnackStore } from "../../context/zustand/store";
 import { api_notif } from '../../api/api_app'
 import { one } from "./ImportantNotification.module.css"
 import { CircularProgress, Slide } from "@material-ui/core";
@@ -10,8 +10,13 @@ export default () => {
     } = useSnackStore(state => ({
         setSnack: state.setSnack
     }))
-
-    const { isLoading, error, data } = useQuery('notif', () => api_notif())
+    const {
+        setAllowShowErr, allowShowErr
+    } = useShowMessageErr(state => ({
+        allowShowErr: state.show,
+        setAllowShowErr: state.shower,
+    }))
+    let { isLoading, error, data } = useQuery('notif', () => api_notif())
 
     function TransitionLeft(props) {
         return <Slide {...props} direction="left" />;
@@ -24,11 +29,13 @@ export default () => {
             alert: state,
         })
     }
-
     useEffect(() => {
         if (data) {
             if (data.message) {
-                logger(data.message)
+                if (allowShowErr) {
+                    logger(data.message)
+                    setAllowShowErr(false)
+                }
             } else if (!data.packet) {
 
                 logger("فعلا اعلانی موجود نیست", "warning")

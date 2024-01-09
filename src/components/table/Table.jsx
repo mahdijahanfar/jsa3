@@ -2,17 +2,26 @@ import React, { useEffect } from 'react';
 import { Paper, TableHead, TableRow, TableContainer, TableCell, Table, TableBody, Slide, CircularProgress } from "@material-ui/core"
 import { api_tarp } from "../../api/api_app"
 import { useQuery } from 'react-query'
-import { useSnackStore } from '../../context/zustand/store'
+import { useShowMessageErr, useSnackStore } from '../../context/zustand/store'
 
 import { trEve, cell } from "./Table.module.css"
+import { useInterval } from '../../utils/useInterval';
 
 export default function Index() {
-    const { isLoading, error, data } = useQuery('tarp', () => api_tarp())
-
+    const { isLoading, error, data, refetch } = useQuery('tarp', () => api_tarp())
+    useInterval(() => {
+        refetch();
+    }, 30000);
     const {
         setSnack
     } = useSnackStore(state => ({
         setSnack: state.setSnack
+    }))
+    const {
+        setAllowShowErr, allowShowErr
+    } = useShowMessageErr(state => ({
+        allowShowErr: state.show,
+        setAllowShowErr: state.shower,
     }))
     const logger = (message, state = "error", position = TransitionLeft) => {
         setSnack({
@@ -28,7 +37,10 @@ export default function Index() {
     useEffect(() => {
         if (data) {
             if (data.message) {
-                logger(data.message)
+                if (allowShowErr) {
+                    logger(data.message)
+                    setAllowShowErr(false)
+                }
             } else if (!data.length) {
                 logger("فعلا داده رزبری موجود نیست", "warning")
             }

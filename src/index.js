@@ -8,18 +8,21 @@ import "slick-carousel/slick/slick-theme.css"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import Message from './components/message/Message';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-      retry: false,
-      staleTime: 1000 * 60 * 60 * 24,
-      cacheTime: 1000 * 60 * 60 * 24,
-      refetchOnMount: false,
+const queryClient = new QueryClient(
+  {
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        retry: false,
+        staleTime: 1000 * 60 * 60 * 24,
+        cacheTime: 1000 * 60 * 60 * 24,
+        refetchOnMount: false,
+      },
+
     },
-  },
-})
+  }
+)
 render(
   <QueryClientProvider client={queryClient}>
 

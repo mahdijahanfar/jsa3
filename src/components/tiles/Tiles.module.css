@@ -15,8 +15,11 @@
   .tile{
     text-align: center;
     flex-grow: 1;
-    padding: 2rem 3rem;
+    padding: 2rem 0;
     border: 1px solid var(--blue);
     border-radius: 1px;
     background-color: var(--darkBlue);
+}
+.tile p{
+
 }

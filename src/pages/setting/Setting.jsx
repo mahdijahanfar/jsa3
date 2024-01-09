@@ -4,7 +4,7 @@ import { ButtonBase, FormControl, Input, InputAdornment, MenuItem, TextField, Sl
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
-import { settingForm, useSnackStore } from "../../context/zustand/store";
+import { settingForm, useShowMessageErr, useSnackStore } from "../../context/zustand/store";
 import { setting_form } from '../../api/api_app';
 
 
@@ -44,7 +44,12 @@ export default function Index() {
             alert: state,
         })
     }
-
+    const {
+        setAllowShowErr, allowShowErr
+    } = useShowMessageErr(state => ({
+        allowShowErr: state.show,
+        setAllowShowErr: state.shower,
+    }))
     const validator = () => {
         for (const attr in formValue) {
             if (!formValue[attr]) {
@@ -87,7 +92,10 @@ export default function Index() {
 
 
                     if (data.message && typeof (data.message) === "string") {
-                        logger(data.message)
+                        if (allowShowErr) {
+                            logger(data.message)
+                            setAllowShowErr(false)
+                        }
                     } else {
                         logger("مشکلی پیش آمده")
                     }
